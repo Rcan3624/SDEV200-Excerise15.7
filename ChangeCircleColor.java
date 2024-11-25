@@ -6,6 +6,9 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseButton;
+import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.BorderPane;
@@ -30,7 +33,8 @@ public class ChangeCircleColor extends Application {
         hBox.getChildren().add(btShrink);
 
         // Create and register the handler
-        btEnlarge.setOnAction(new EnlargeHandler());
+        btEnlarge.setOnAction(e -> circlePane.enlarge());
+        btShrink.setOnAction(e -> circlePane.shrink());
 
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(circlePane);
@@ -39,17 +43,30 @@ public class ChangeCircleColor extends Application {
 
         // Create a scene and place it in the stage
         Scene scene = new Scene(borderPane, 200, 150);
-        primaryStage.setTitle("ChangeCircleColor"); // Set the stage title
+        primaryStage.setTitle("ControlCircle"); // Set the stage title
         primaryStage.setScene(scene); // Place the scene in the stage
         primaryStage.show(); // Display the stage
+
+
+        // TODO Figure out how to set the color of the circle when it is already in the pane
+        circlePane.setOnMouseClicked(e -> {
+            if (e.getButton() == MouseButton.PRIMARY) {
+                circlePane.enlarge();
+            }
+            else if (e.getButton() == MouseButton.SECONDARY) {
+                circlePane.shrink();
+            }
+        });
+
     }
 
-    class EnlargeHandler implements EventHandler<ActionEvent> {
-        @Override // Override the handle method
-        public void handle(ActionEvent e) {
-            circlePane.enlarge();
-        }
-    }
+
+//    class EnlargeHandler implements EventHandler<ActionEvent> {
+//        @Override // Override the handle method
+//        public void handle(ActionEvent e) {
+//            circlePane.enlarge();
+//        }
+//    }
 
     /**
      * The main method is only needed for the IDE with limited
@@ -60,21 +77,3 @@ public class ChangeCircleColor extends Application {
     }
 }
 
-class CirclePane extends StackPane {
-    private Circle circle = new Circle(50);
-
-    public CirclePane() {
-        getChildren().add(circle);
-        circle.setStroke(Color.BLACK);
-        circle.setFill(Color.WHITE);
-    }
-
-    public void enlarge() {
-        circle.setRadius(circle.getRadius() + 2);
-    }
-
-    public void shrink() {
-        circle.setRadius(circle.getRadius() > 2 ?
-                circle.getRadius() - 2 : circle.getRadius());
-    }
-}
