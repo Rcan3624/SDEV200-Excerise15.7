@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 
 public class ChangeCircleColor extends Application {
 
-    // TODO Modify example to meet the assignment requirements
+
     private CirclePane circlePane = new CirclePane();
 
     @Override // Override the start method in the Application class
@@ -27,10 +27,10 @@ public class ChangeCircleColor extends Application {
         HBox hBox = new HBox();
         hBox.setSpacing(10);
         hBox.setAlignment(Pos.CENTER);
-        Button btEnlarge = new Button("Enlarge");
-        Button btShrink = new Button("Shrink");
-        hBox.getChildren().add(btEnlarge);
-        hBox.getChildren().add(btShrink);
+//        Button btEnlarge = new Button("Enlarge");
+//        Button btShrink = new Button("Shrink");       // Useless for this exercise
+//        hBox.getChildren().add(btEnlarge);
+//        hBox.getChildren().add(btShrink);
 
 //        // Create and register the handler
 //        btEnlarge.setOnAction(e -> circlePane.enlarge());
@@ -54,7 +54,7 @@ public class ChangeCircleColor extends Application {
                 circlePane.colorBlack();
             }
 
-            //TODO change code to change circle on mouse button release
+            //TODO change code to change circle white on mouse button release
             else if (e.getButton() == MouseButton.SECONDARY) {
                 circlePane.colorWhite();
             }

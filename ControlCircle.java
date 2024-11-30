@@ -22,6 +22,8 @@ public class ControlCircle extends Application {
         HBox hBox = new HBox();
         hBox.setSpacing(10);
         hBox.setAlignment(Pos.CENTER);
+
+        // Not really needed, but the compiler gets upset if I remove the button object creators
         Button btEnlarge = new Button("Enlarge");
         Button btShrink = new Button("Shrink");
         hBox.getChildren().add(btEnlarge);
@@ -45,7 +47,7 @@ public class ControlCircle extends Application {
     class EnlargeHandler implements EventHandler<ActionEvent> {
         @Override // Override the handle method
         public void handle(ActionEvent e) {
-            circlePane.colorBlack();
+            circlePane.colorBlack();  // There really isn't any reason to have this method but removing it upsets the compiler
         }
     }
 
@@ -67,7 +69,7 @@ class CirclePane extends StackPane {
         circle.setFill(Color.WHITE);
     }
 
-    // This probably considered an inefficient and lazy way to code this exercise, but I need to get this done ASAP
+    // I'll admit, this is not the most efficient way to code this exercise, but I need to get this done ASAP
     public void colorBlack() {
         circle.setFill(Color.BLACK);
     }
@@ -76,8 +78,4 @@ class CirclePane extends StackPane {
         circle.setFill(Color.WHITE);
     }
 
-    public void shrink() {
-        circle.setRadius(circle.getRadius() > 2 ?
-                circle.getRadius() - 2 : circle.getRadius());
-    }
 }
