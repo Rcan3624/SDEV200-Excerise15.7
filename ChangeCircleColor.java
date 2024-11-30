@@ -32,9 +32,9 @@ public class ChangeCircleColor extends Application {
         hBox.getChildren().add(btEnlarge);
         hBox.getChildren().add(btShrink);
 
-        // Create and register the handler
-        btEnlarge.setOnAction(e -> circlePane.enlarge());
-        btShrink.setOnAction(e -> circlePane.shrink());
+//        // Create and register the handler
+//        btEnlarge.setOnAction(e -> circlePane.enlarge());
+//        btShrink.setOnAction(e -> circlePane.shrink());
 
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(circlePane);
@@ -48,13 +48,15 @@ public class ChangeCircleColor extends Application {
         primaryStage.show(); // Display the stage
 
 
-        // TODO Figure out how to set the color of the circle when it is already in the pane
+        // Change color of the circle when the user clicks the left mouse button
         circlePane.setOnMouseClicked(e -> {
             if (e.getButton() == MouseButton.PRIMARY) {
-                circlePane.enlarge();
+                circlePane.colorBlack();
             }
+
+            //TODO change code to change circle on mouse button release
             else if (e.getButton() == MouseButton.SECONDARY) {
-                circlePane.shrink();
+                circlePane.colorWhite();
             }
         });
 

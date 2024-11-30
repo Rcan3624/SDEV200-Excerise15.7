@@ -45,7 +45,7 @@ public class ControlCircle extends Application {
     class EnlargeHandler implements EventHandler<ActionEvent> {
         @Override // Override the handle method
         public void handle(ActionEvent e) {
-            circlePane.enlarge();
+            circlePane.colorBlack();
         }
     }
 
@@ -67,8 +67,13 @@ class CirclePane extends StackPane {
         circle.setFill(Color.WHITE);
     }
 
-    public void enlarge() {
-        circle.setRadius(circle.getRadius() + 2);
+    // This probably considered an inefficient and lazy way to code this exercise, but I need to get this done ASAP
+    public void colorBlack() {
+        circle.setFill(Color.BLACK);
+    }
+
+    public void colorWhite() {
+        circle.setFill(Color.WHITE);
     }
 
     public void shrink() {
