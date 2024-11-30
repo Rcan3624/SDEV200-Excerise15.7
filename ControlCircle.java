@@ -1,11 +1,8 @@
 package com.example.exercise157;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.BorderPane;
@@ -18,19 +15,13 @@ public class ControlCircle extends Application {
 
     @Override // Override the start method in the Application class
     public void start(Stage primaryStage) {
-        // Hold two buttons in an HBox
+
+        // Left over code from 15.10 book example to ensure that the program works properly
         HBox hBox = new HBox();
         hBox.setSpacing(10);
         hBox.setAlignment(Pos.CENTER);
 
-        // Not really needed, but the compiler gets upset if I remove the button object creators
-        Button btEnlarge = new Button("Enlarge");
-        Button btShrink = new Button("Shrink");
-        hBox.getChildren().add(btEnlarge);
-        hBox.getChildren().add(btShrink);
 
-        // Create and register the handler
-        btEnlarge.setOnAction(new EnlargeHandler());
 
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(circlePane);
@@ -44,12 +35,7 @@ public class ControlCircle extends Application {
         primaryStage.show(); // Display the stage
     }
 
-    class EnlargeHandler implements EventHandler<ActionEvent> {
-        @Override // Override the handle method
-        public void handle(ActionEvent e) {
-            circlePane.colorBlack();  // There really isn't any reason to have this method but removing it upsets the compiler
-        }
-    }
+
 
     /**
      * The main method is only needed for the IDE with limited
@@ -69,7 +55,6 @@ class CirclePane extends StackPane {
         circle.setFill(Color.WHITE);
     }
 
-    // I'll admit, this is not the most efficient way to code this exercise, but I need to get this done ASAP
     public void colorBlack() {
         circle.setFill(Color.BLACK);
     }
